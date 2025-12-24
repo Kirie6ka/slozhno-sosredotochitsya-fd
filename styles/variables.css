@@ -1,4 +1,19 @@
-/*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
-*/
+:root {
+  --font-family: "IBM Plex Mono", system-ui, -apple-system, BlinkMacSystemFont,
+    "Inter", sans-serif;
+    --text-font-weight: 400;
+    --title-font-weight: 700;
+    --font-text: 18px;
+  --page-bg-color: #000028;
+  --page-bg-image: url("../images/cover-image-dark.png");
+  --accent-color: #ff0070;
+  --accent-soft-color: #ff8dcb;
+  --title-color: #db00ff;
+  --color-card-title: #000028;
+  --section-title-color: #FF0070;
+  --text-color: #f1b2ce;
+  --corner-color: var(--accent-color);
+  --rec-color: var(--accent-color);
+  --section-padding-block: 40px;
+  --section-padding-inline: 10px;
+}

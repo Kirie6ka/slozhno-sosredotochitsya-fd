@@ -395,6 +395,7 @@
 
   .section_type_reasons .section__title {
     grid-column: 1;
+    inline-size: 236px;
   }
 
   .section_type_reasons .section__cards {

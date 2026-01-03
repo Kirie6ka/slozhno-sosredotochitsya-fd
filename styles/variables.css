@@ -1,9 +1,8 @@
 :root {
-  --font-family: "IBM Plex Mono", system-ui, -apple-system, BlinkMacSystemFont,
-    "Inter", sans-serif;
-    --text-font-weight: 400;
-    --title-font-weight: 700;
-    --font-text: 18px;
+  --font-family: "IBM Plex Mono", monospace;
+  --text-font-weight: 400;
+  --title-font-weight: 700;
+  --font-size: 18px;
   --page-bg-color: #000028;
   --page-bg-image: url("../images/cover-image-dark.png");
   --accent-color: #ff0070;
@@ -16,4 +15,5 @@
   --rec-color: var(--accent-color);
   --section-padding-block: 40px;
   --section-padding-inline: 10px;
+  --shadow-title: 4px 4px 0 var(--accent-color);
 }

@@ -1,14 +1,25 @@
 :root {
   --footer-offset: 40px;
+  --title-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --font-size: 18px;
+  --corner-gap: 9px;
+  --corner-top: 1px;
+  --corner-right: 10px;
+  --viewport-height: 100vh;
+  --layout-min-height: 668px;
+  --shadow-title: 4px 4px 0 var(--accent-color);
 }
 
 .page {
-  min-block-size: 100dvb;
-  overflow-x: clip;
-  color: var(--color-text);
+  min-block-size: var(--viewport-height);
+  color: var(--text-color);
   background-color: var(--page-bg-color);
   font-family: var(--font-family);
   font-size: var(--font-text);
+  background-image: var(--page-bg-image);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% var(--viewport-height);
 }
 
 .decorated-zone {
@@ -38,19 +49,14 @@
 }
 
 .header {
-  min-block-size: 100dvh;
+  block-size: var(--viewport-height);
+  min-block-size: var(--layout-min-height);
   position: relative;
-
   display: grid;
   grid-template-rows: auto auto auto;
   padding-block: 20px 66px;
   padding-inline: 10px;
   row-gap: 61px;
-
-  background-image: var(--page-bg-image);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .header__theme-menu {
@@ -76,7 +82,7 @@
   text-transform: lowercase;
   font-family: var(--font-family);
   font-weight: var(--text-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
   line-height: 18px;
   text-align: center;
   color: var(--accent-color);
@@ -98,13 +104,12 @@
 
 .header__rec {
   position: absolute;
-  inset-block-start: 10px;
-  inset-inline-end: 19px;
+  inset-block-start: calc(var(--corner-top) + var(--corner-gap));
+  inset-inline-end: calc(var(--corner-right) + var(--corner-gap));
   margin: 0;
-
   font-family: var(--font-family);
   font-weight: var(--text-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
   line-height: 25px;
   text-transform: uppercase;
   color: var(--rec-color);
@@ -121,23 +126,20 @@
 
 .header__title {
   margin: 0;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size: var(--title-size);
   line-height: 0.83;
   color: var(--title-color);
-  text-shadow: 4px 4px 0 var(--accent-color);
-}
-
-.header__title-word {
-  display: block;
+  text-shadow: var(--shadow-title);
 }
 
 .header__subtitle {
   margin: 0;
-  max-inline-size: 355px;
+  display: inline-block;
+  max-inline-size: 491px;
   justify-self: start;
   font-family: var(--font-family);
   font-weight: var(--title-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
 }
 
 .tablet__br {
@@ -155,7 +157,7 @@
   color: var(--color-card-title);
   font-family: var(--font-family);
   font-weight: var(--title-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
 }
 
 .header__subtitle.title-decor {
@@ -169,6 +171,7 @@
   flex-direction: column;
   gap: 50px;
   padding-inline: var(--section-padding-inline);
+  background-color: var(--page-bg-color);
 }
 
 .section {
@@ -181,11 +184,12 @@
 }
 
 .section__title {
+  max-inline-size: 315px;
   grid-column: 1 / -1;
   margin: 0;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-family);
   font-weight: var(--title-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
   line-height: 23.4px;
   color: var(--section-title-color);
 }
@@ -205,23 +209,14 @@
   display: block;
   inline-size: 100%;
   color: var(--color-card-title);
-  font-weight: 700;
-}
-
-.s3_card__title{
-  margin: 0;
-  padding: 0;
-  display: block;
-  inline-size: 100%;
-  color: var(--color-card-title);
-  font-weight: 400;
+  font-weight: var(--text-font-weight);
 }
 
 .card__text {
   margin: 10px 0 0;
   font-family: var(--font-family);
   font-weight: var(--text-font-weight);
-  font-size: 18px;
+  font-size: var(--font-size);
   line-height: 1.3;
   color: var(--text-color);
 }
@@ -241,10 +236,6 @@
   outline-offset: 2px;
 }
 
-.section__two-columns {
-  display: grid;
-}
-
 .section__lead {
   margin: 0 0 25px;
   color: var(--color-card-title);
@@ -260,33 +251,44 @@
 
 .gallery {
   display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   gap: 10px;
 }
 
 .gallery__item {
+  block-size: 100%;
+}
+
+.gallery__item img {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .footer {
   margin-top: var(--footer-offset);
-  min-block-size: 100dvh;
+  block-size: var(--viewport-height);
+  min-block-size: var(--layout-min-height);
   display: grid;
   place-items: center;
   padding-inline: var(--section-padding-inline);
+  background-color: transparent;
 }
 
 .footer__title {
   margin: 0;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size: var(--title-size);
   color: var(--title-color);
-  text-shadow: 4px 4px 0 var(--accent-color);
+  text-shadow: var(--shadow-title);
 }
 
 @media (width >= 768px) {
   :root {
     --footer-offset: 60px;
+    --title-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
   .decorated-zone::before {
@@ -308,8 +310,6 @@
   }
 
   .header {
-    min-block-size: 100dvh;
-    display: grid;
     grid-template-rows: 1fr auto 1fr;
     row-gap: 35px;
     background-position: center;
@@ -326,17 +326,11 @@
     align-self: auto;
   }
 
-  .header__title-word {
-    display: inline;
-  }
-
   .header__title {
     margin-top: 50px;
     grid-row: 2;
     justify-self: start;
     align-self: center;
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-    line-height: 0.83;
   }
 
   .header__subtitle {
@@ -353,11 +347,6 @@
 
   .laptop__br {
     display: inline;
-  }
-
-  .title-decor {
-    display: block;
-    inline-size: 100%;
   }
 
   .header__subtitle.title-decor {
@@ -424,10 +413,6 @@
     grid-column: 1;
   }
 
-  .section_type_tips .section__two-columns {
-    grid-column: 2;
-  }
-
   .section_type_tips .section__lead {
     margin: 0 0 20px;
   }
@@ -457,13 +442,6 @@
     gap: 20px;
   }
 
-  .gallery__item {
-    inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
   .gallery__item:nth-child(1) {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -490,18 +468,16 @@
   }
 
   .footer {
-    margin-top: var(--footer-offset);
     padding-inline: 20px;
-  }
-
-  .footer__title {
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 }
 
 @media (width >= 1024px) {
   :root {
-    --footer-offset: 60px;
+    --footer-offset: 63px;
+    --corner-gap: 9px;
+    --corner-top: 11px;
+    --corner-right: 5px;
   }
 
   .page {
@@ -520,9 +496,6 @@
 
   .header {
     padding: 0;
-    min-block-size: 100vh;
-
-    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     column-gap: 20px;
@@ -533,40 +506,32 @@
   .header__theme-menu {
     grid-column: 1 / -1;
     grid-row: 1;
-
     justify-self: center;
     align-self: start;
-
     margin-bottom: 160px;
     padding-top: 20px;
     position: static;
   }
 
   .header__theme-menu-list {
+    padding-left: 12px;
     flex-direction: row;
-    gap: 10px;
+    gap: 11px;
   }
 
   .header__rec {
-    inset-block-start: 20px;
-    inset-inline-end: 10px;
+    inset-block-start: calc(var(--corner-top) + var(--corner-gap));
+    inset-inline-end: calc(var(--corner-right) + var(--corner-gap));
   }
 
   .header__title {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-
     justify-self: start;
     align-self: center;
-
     margin: 0;
     padding: 0;
-
     white-space: nowrap;
-  }
-
-  .header__title-word {
-    display: inline;
   }
 
   .header__subtitle {
@@ -580,7 +545,6 @@
 
   .header__subtitle.title-decor {
     display: block;
-    inline-size: 491px;
     max-inline-size: 491px;
   }
 
@@ -616,17 +580,9 @@
   }
 
   .section_type_gallery .gallery {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 260px 315px 433px;
     gap: 20px;
-  }
-
-  .gallery__item {
-    inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
-    display: block;
   }
 
   .gallery__item:nth-child(1) {
@@ -652,9 +608,5 @@
   .gallery__item:nth-child(5) {
     grid-column: 2 / 4;
     grid-row: 3;
-  }
-
-  .footer {
-    margin-top: var(--footer-offset);
   }
 }

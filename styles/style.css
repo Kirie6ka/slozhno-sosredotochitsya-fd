@@ -7,6 +7,7 @@
   max-inline-size: 1024px;
   margin-inline: auto;
   position: relative;
+  background-attachment: fixed;
 }
 
 .page::before {
@@ -130,10 +131,12 @@
   color: var(--rec-color);
 }
 
-.header__rec-sign {
+.header__rec::after {
+  content: "";
   display: inline-block;
   inline-size: 9px;
   block-size: 9px;
+  margin-inline-start: 10px; /* расстояние от текста REC до точки */
   border-radius: 50%;
   background-color: var(--rec-color);
   box-shadow: 0 0 4px 2px var(--rec-color);

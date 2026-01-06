@@ -16,4 +16,11 @@
   --section-padding-block: 40px;
   --section-padding-inline: 10px;
   --shadow-title: 4px 4px 0 var(--accent-color);
+  --footer-offset: 40px;
+  --title-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --corner-gap: 9px;
+  --corner-top: 1px;
+  --corner-right: 10px;
+  --viewport-height: 100vh;
+  --layout-min-height: 668px;
 }
